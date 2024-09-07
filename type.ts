@@ -3,7 +3,8 @@ export interface Todo{
     todo:string;
     name:string,
     number:string;
-    email?:string
+    email?:string;
+    roll?:string;
 }
 
 

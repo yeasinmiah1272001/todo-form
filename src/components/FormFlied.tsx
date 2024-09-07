@@ -120,44 +120,50 @@ const FormFlied = () => {
           </form>
         </div>
 
-        {/* Right Side Table */}
-        <div className="w-2/3 bg-white p-6 rounded-lg shadow-lg">
-          <h2 className="text-lg font-bold mb-4">Entered Details</h2>
-          <div className="flex justify-between p-2">
-            <h1 className="text-xl font-bold text-black">Name</h1>
-            <h1 className="text-xl font-bold text-black">Email</h1>
-            <h1 className="text-xl font-bold text-black">Number</h1>
-            <h1 className="text-xl font-bold text-black">Roll</h1>
-            <h1 className="text-xl font-bold text-black">Action</h1>
-          </div>
-          <div>
-            {selector.length > 0 ? (
-              <>
-                {selector.map((item:Todo, index:number) => (
-                  <TodoList key={index} item={item} />
-                ))}
-                <h1
-                  onClick={() => dispatch(remove(), toast.success("all todo deleted success"))}
-                  className="text-2xl font-bold hover:text-red-600 duration-500 text-center mt-7 border-2 border-green-500 bg-transparent hover:bg-green-500 text-amber-500 rounded-md p-1"
-                >
-                  {" "}
-                  All Delete
-                </h1>
-              </>
-            ) : (
-              <div className="py-10">
-                <i>
-                  <h1 className="text-center text-4xl font-bold text-red-500">
-                    Todo Not Here
-                  </h1>
-                  <p className="text-red-500 font-semibold text-xl text-center mt-4">
-                    Please Add Your Todo
-                  </p>
-                </i>
-              </div>
-            )}
-          </div>
-        </div>
+      {/* Right Side Table */}
+<div className="w-full lg:w-2/3 bg-white p-6 rounded-lg shadow-lg">
+  <h2 className="text-lg font-bold mb-4">Entered Details</h2>
+
+  {/* Column Headers */}
+  <div className="hidden lg:flex justify-between p-2">
+    <h1 className="text-xl font-bold text-black">Name</h1>
+    <h1 className="text-xl font-bold text-black">Email</h1>
+    <h1 className="text-xl font-bold text-black">Number</h1>
+    <h1 className="text-xl font-bold text-black">Roll</h1>
+    <h1 className="text-xl font-bold text-black">Action</h1>
+  </div>
+
+  <div>
+    {selector.length > 0 ? (
+      <>
+        {selector.map((item: Todo, index: number) => (
+          <TodoList key={index} item={item} />
+        ))}
+
+        <h1
+          onClick={() =>
+            dispatch(remove(), toast.success("All todo deleted successfully"))
+          }
+          className="text-2xl font-bold hover:text-red-600 duration-500 text-center mt-7 border-2 border-green-500 bg-transparent hover:bg-green-500 text-amber-500 rounded-md p-1 cursor-pointer"
+        >
+          All Delete
+        </h1>
+      </>
+    ) : (
+      <div className="py-10">
+        <i>
+          <h1 className="text-center text-4xl font-bold text-red-500">
+            Todo Not Here
+          </h1>
+          <p className="text-red-500 font-semibold text-xl text-center mt-4">
+            Please Add Your Todo
+          </p>
+        </i>
+      </div>
+    )}
+  </div>
+</div>
+
       </div>
     </div>
   );
