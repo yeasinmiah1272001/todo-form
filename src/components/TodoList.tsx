@@ -2,8 +2,20 @@ import { MdDelete } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { deleteTodo } from "./Redux/todoSlice";
 import toast from "react-hot-toast";
-// @ts-ignore
-const TodoList = ({ item }) => {
+
+interface Props{
+item:{
+  email:string;
+id:number;
+name:string;
+number:string;
+roll:string
+}
+};
+const TodoList = ({ item }:Props) => {
+
+
+  
   const dispatch = useDispatch();
 
 

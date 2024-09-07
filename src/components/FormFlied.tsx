@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo, remove } from "./Redux/todoSlice";
 import TodoList from "./TodoList";
-import { MdDelete } from "react-icons/md";
 import toast from "react-hot-toast";
 import { State } from "../../type";
 
