@@ -2,15 +2,10 @@ import { MdDelete } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { deleteTodo } from "./Redux/todoSlice";
 import toast from "react-hot-toast";
+import { Todo } from "../../type";
 
 interface Props{
-item:{
-  email:string;
-id:number;
-name:string;
-number:string;
-roll:string
-}
+item:Todo
 };
 const TodoList = ({ item }:Props) => {
 
@@ -23,8 +18,8 @@ const TodoList = ({ item }:Props) => {
   return (
 
       <div className="flex block justify-between mt-6">
-        <h1 className="text-sm font-bold text-black">{item.name}</h1>
-        <h1 className="text-sm font-bold text-black">{item.email}</h1>
+        <h1 className="text-sm font-bold text-black">{item?.name}</h1>
+        <h1 className="text-sm font-bold text-black">{item?.email}</h1>
         <h1 className="text-sm font-bold text-black">{item.number}</h1>
         <h1
           onClick={() => dispatch(deleteTodo(item.id), toast.success("todo deleted success"))}

@@ -1,8 +1,9 @@
 export interface Todo{
-    _id:string;
+    id:number;
     todo:string;
     name:string,
-    number:string
+    number:string;
+    email?:string
 }
 
 
@@ -12,3 +13,13 @@ export interface State{
       todo:Todo[]
     }
   }
+
+  export interface TodoITem{
+    item:{
+      email:string;
+    id:number;
+    name:string;
+    number:string;
+    roll:string
+    }
+    };

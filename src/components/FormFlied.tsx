@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTodo, remove } from "./Redux/todoSlice";
 import TodoList from "./TodoList";
 import toast from "react-hot-toast";
-import { State } from "../../type";
+import { State, Todo, TodoITem } from "../../type";
 
 const FormFlied = () => {
   // Separate state for each input field
@@ -133,7 +133,7 @@ const FormFlied = () => {
           <div>
             {selector.length > 0 ? (
               <>
-                {selector.map((item:any, index:any) => (
+                {selector.map((item:Todo, index:any) => (
                   <TodoList key={index} item={item} />
                 ))}
                 <h1
