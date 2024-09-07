@@ -123,7 +123,7 @@ const FormFlied = () => {
         {/* Right Side Table */}
         <div className="w-2/3 bg-white p-6 rounded-lg shadow-lg">
           <h2 className="text-lg font-bold mb-4">Entered Details</h2>
-          <div className="flex block justify-between p-2">
+          <div className="flex justify-between p-2">
             <h1 className="text-xl font-bold text-black">Name</h1>
             <h1 className="text-xl font-bold text-black">Email</h1>
             <h1 className="text-xl font-bold text-black">Number</h1>
@@ -133,7 +133,7 @@ const FormFlied = () => {
           <div>
             {selector.length > 0 ? (
               <>
-                {selector.map((item:Todo, index:any) => (
+                {selector.map((item:Todo, index:number) => (
                   <TodoList key={index} item={item} />
                 ))}
                 <h1

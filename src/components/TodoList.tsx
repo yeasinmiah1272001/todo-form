@@ -17,7 +17,7 @@ const TodoList = ({ item }:Props) => {
 
   return (
 
-      <div className="flex block justify-between mt-6">
+      <div className="flex justify-between mt-6">
         <h1 className="text-sm font-bold text-black">{item?.name}</h1>
         <h1 className="text-sm font-bold text-black">{item?.email}</h1>
         <h1 className="text-sm font-bold text-black">{item.number}</h1>
