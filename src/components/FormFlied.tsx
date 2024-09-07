@@ -6,6 +6,7 @@ import { addTodo, remove } from "./Redux/todoSlice";
 import TodoList from "./TodoList";
 import { MdDelete } from "react-icons/md";
 import toast from "react-hot-toast";
+import { State } from "../../type";
 
 const FormFlied = () => {
   // Separate state for each input field
@@ -14,7 +15,8 @@ const FormFlied = () => {
   const [roll, setRoll] = useState("");
   const [number, setNumber] = useState("");
   const dispatch = useDispatch();
-  const selector = useSelector((state) => state.name.todo);
+  // @ts-ignore
+  const selector = useSelector((state:State) => state.name.todo);
 
   const allData = {
     id: Date.now(),
@@ -27,6 +29,7 @@ const FormFlied = () => {
   // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // @ts-ignore
     dispatch(addTodo(allData)); 
     toast.success("todo added success")
     setName("");
@@ -129,7 +132,7 @@ const FormFlied = () => {
           <div>
             {selector.length > 0 ? (
               <>
-                {selector.map((item, index) => (
+                {selector.map((item:any, index:any) => (
                   <TodoList key={index} item={item} />
                 ))}
                 <h1
