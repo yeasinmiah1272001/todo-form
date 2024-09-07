@@ -14,8 +14,10 @@ const FormFlied = () => {
   const [roll, setRoll] = useState("");
   const [number, setNumber] = useState("");
   const dispatch = useDispatch();
-  // @ts-expect-error dummy
   const selector = useSelector((state:State) => state.name.todo);
+ 
+
+  
 
   const allData = {
     id: Date.now(),
@@ -28,7 +30,7 @@ const FormFlied = () => {
   // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // @ts-expect-error dummy
+
     dispatch(addTodo(allData)); 
     toast.success("todo added success")
     setName("");

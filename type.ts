@@ -8,7 +8,7 @@ export interface Todo{
 
 
 export interface State{
-    todo:{
-      todoList:Todo[]
+    name:{
+      todo:Todo[]
     }
   }
