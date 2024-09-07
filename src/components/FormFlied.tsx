@@ -7,46 +7,28 @@ import TodoList from "./TodoList";
 import { MdDelete } from "react-icons/md";
 import toast from "react-hot-toast";
 
-// Typing for Todo
-interface Todo {
-  id: number;
-  name: string;
-  email: string;
-  roll: string;
-  number: string;
-}
-
-// Typing for the RootState of the Redux store
-interface RootState {
-  name: {
-    todo: Todo[];
-  };
-}
-
 const FormFlied = () => {
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [roll, setRoll] = useState<string>("");
-  const [number, setNumber] = useState<string>("");
-
+  // Separate state for each input field
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [roll, setRoll] = useState("");
+  const [number, setNumber] = useState("");
   const dispatch = useDispatch();
+  const selector = useSelector((state) => state.name.todo);
 
-  // Type the useSelector correctly
-  const selector = useSelector((state: RootState) => state.name.todo);
-
-  const allData: Todo = {
+  const allData = {
     id: Date.now(),
     name,
     email,
     roll,
-    number,
+    number
   };
 
   // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(addTodo(allData)); 
-    toast.success("Todo added successfully");
+    toast.success("todo added success")
     setName("");
     setEmail("");
     setRoll("");
@@ -63,15 +45,15 @@ const FormFlied = () => {
         <div className="w-1/3 bg-gray-200 p-6 rounded-lg">
           <h2 className="text-lg font-bold mb-4">Fill the Form</h2>
           <form onSubmit={handleSubmit}>
-            {/* Form Fields */}
             <div className="mb-4">
               <label htmlFor="name" className="block text-sm font-medium mb-1">
                 Name
               </label>
               <input
                 type="text"
+          
                 name="name"
-                value={name}
+                value={name} // Set value to reset input
                 onChange={(e) => setName(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -83,8 +65,9 @@ const FormFlied = () => {
               </label>
               <input
                 type="text"
+           
                 name="roll"
-                value={roll}
+                value={roll} // Set value to reset input
                 onChange={(e) => setRoll(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -96,8 +79,9 @@ const FormFlied = () => {
               </label>
               <input
                 type="text"
+               
                 name="number"
-                value={number}
+                value={number} // Set value to reset input
                 onChange={(e) => setNumber(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
@@ -109,18 +93,17 @@ const FormFlied = () => {
               </label>
               <input
                 type="email"
+                id="email"
                 name="email"
-                value={email}
+                value={email} // Set value to reset input
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
-            
-            {/* Submit Button */}
             <div>
               <button
                 type="submit"
-                disabled={isDisabled}
+                disabled={isDisabled} // Disable if any field is empty
                 className={`mb-2 text-white font-bold py-2 px-4 rounded w-full ${
                   isDisabled
                     ? "bg-gray-400 cursor-not-allowed"
@@ -150,12 +133,10 @@ const FormFlied = () => {
                   <TodoList key={index} item={item} />
                 ))}
                 <h1
-                  onClick={() => {
-                    dispatch(remove());
-                    toast.success("All todos deleted successfully");
-                  }}
+                  onClick={() => dispatch(remove(), toast.success("all todo deleted success"))}
                   className="text-2xl font-bold hover:text-red-600 duration-500 text-center mt-7 border-2 border-green-500 bg-transparent hover:bg-green-500 text-amber-500 rounded-md p-1"
                 >
+                  {" "}
                   All Delete
                 </h1>
               </>
