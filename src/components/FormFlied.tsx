@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTodo, remove } from "./Redux/todoSlice";
 import TodoList from "./TodoList";
 import toast from "react-hot-toast";
-import { State, Todo, TodoITem } from "../../type";
+import { State, Todo } from "../../type";
 
 const FormFlied = () => {
   // Separate state for each input field
